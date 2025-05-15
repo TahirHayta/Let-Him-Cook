@@ -17,7 +17,7 @@ public class PlayerInteraction : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 input = new Vector2(horizontal, vertical);
 
-        if (input != Vector2.zero) // if no movement, keep last diretion
+        if (input != Vector2.zero) // if no movement, keep last direction
         {
             facingDirection = input.normalized;
         }
