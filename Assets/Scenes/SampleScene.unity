@@ -432,9 +432,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 603272691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f0787fa390d6714a930449b1343f8f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0eea1be0db379be91a8476529b8fea9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemData: {fileID: 11400000, guid: 7a136952cf1b25641a323cdbfeaf05a3, type: 2}
 --- !u!1 &605760118
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,10 +447,10 @@ GameObject:
   - component: {fileID: 605760123}
   - component: {fileID: 605760122}
   - component: {fileID: 605760124}
+  - component: {fileID: 605760125}
   - component: {fileID: 605760121}
   - component: {fileID: 605760120}
   - component: {fileID: 605760119}
-  - component: {fileID: 605760125}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player

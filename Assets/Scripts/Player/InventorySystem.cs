@@ -14,16 +14,17 @@ public class InventorySystem : MonoBehaviour
     
     public static Action OnInventoryChanged;
 
-    public bool AddItem(ItemSO item) {
-        if (items.Count >= maxItems) {
+    public void AddItem(ItemSO item, GameObject itemObjectToDestroy)
+    {
+        if (items.Count >= maxItems)
+        {
             Debug.Log("Inventory is full!");
-            return false;
         }
         items.Add(item);
         Debug.Log("Added " + item.itemName + " to inventory.");
+        Destroy(itemObjectToDestroy); // I am destroying the item object here instead of in Material.cs to ensure it is destroyed after added to the inventory.
         UpdateInventoryUI();
         OnInventoryChanged?.Invoke();
-        return true;
     }
 
     public void RemoveItem(ItemSO item) {
@@ -53,15 +54,19 @@ public class InventorySystem : MonoBehaviour
         }
         OnInventoryChanged?.Invoke();
     }
-    
-    public void OnEnable() {
-        PlayerInteraction.OnInteract += HandleInventoryChanged;
+
+    public void OnEnable()
+    {
+        //PlayerInteraction.OnInteract += HandleInventoryChanged;
+        Material.OnItemAdded += AddItem;
     }
-    public void OnDisable() {
-        PlayerInteraction.OnInteract -= HandleInventoryChanged;
+    public void OnDisable()
+    {
+        //PlayerInteraction.OnInteract -= HandleInventoryChanged;
+        Material.OnItemAdded -= AddItem;
     }
     
-    private void HandleInventoryChanged(GameObject interactedObject) {
+    /*private void HandleInventoryChanged(GameObject interactedObject) { // Bu metoda gerek yok, zaten Material.cs'de OnPickup() bunun yaptıklarını yapıyor.
         ItemBehaviour item = interactedObject.GetComponent<ItemBehaviour>();
         if (item != null) {
             bool added = AddItem(item.ItemData);
@@ -69,5 +74,5 @@ public class InventorySystem : MonoBehaviour
                 Destroy(interactedObject);
             }
         }
-    }
+    }*/
 }
