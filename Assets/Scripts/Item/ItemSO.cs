@@ -4,6 +4,8 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     public string itemName;
+    public int itemID;
     public string itemDescription;
-    public GameObject itemPrefab;
+    public Sprite itemIcon;
+    public GameObject itemPrefab; // bunu çıkartabiliriz de ben de tam bilmiyom
 }

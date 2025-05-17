@@ -7,5 +7,6 @@ using System;
 
 public class StructureData
 {
+
     
 }

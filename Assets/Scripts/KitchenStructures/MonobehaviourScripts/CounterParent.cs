@@ -9,11 +9,15 @@ public class CounterParent : MonoBehaviour, InteractableInterface
     public bool isFull;
     public int maxCapacity;
     public int currentCapacity;
-    public LinkedList<FoodItem> foodItems = new LinkedList<FoodItem>(); // to hold food items in the counter
+    public LinkedList<ItemSO> ItemSOs = new LinkedList<ItemSO>(); // to hold food items in the counter
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        initalizeEmptyCounter(); // For now
+        StartToTry();
+    }
+    private void StartToTry() // to test
+    {
+        // Should I initialize from StructureData? or should I create StructureData from here?
     }
 
     // Update is called once per frame
@@ -22,28 +26,42 @@ public class CounterParent : MonoBehaviour, InteractableInterface
 
     }
 
-    public void initalizeEmptyCounter()
-    {
-        isFull = false;
-        currentCapacity = 0;
-        foodItems.Clear();
-    }
-    public void initalizeFromData(StructureData data)
-    {
-        
-    }
-
     public void Interact() // called from PlayerInteraction.cs
     {
         Debug.Log(this.name + " has been interacted with!");
     }
-    public virtual void AddItem(FoodItem item)
+    public virtual void AddItem(ItemSO item)
     {
-
+        if (!isFull)
+        {
+            ItemSOs.AddLast(item);
+            currentCapacity++;
+            if (currentCapacity >= maxCapacity)
+            {
+                isFull = true;
+            }
+            Debug.Log(item.itemName + " has been added to " + counterName);
+        }
+        else
+        {
+            Debug.Log(counterName + " is full!");
+        }
     }
-    public virtual void GetItem(FoodItem item)
+    public virtual ItemSO GetItem()
     {
-
+        if (currentCapacity > 0)
+        {
+            ItemSO item = ItemSOs.Last.Value;
+            ItemSOs.RemoveLast();
+            currentCapacity--;
+            isFull = false;
+            return item;
+        }
+        else
+        {
+            Debug.Log(counterName + " is empty!");
+            return null;
+        }
     }
     
 }

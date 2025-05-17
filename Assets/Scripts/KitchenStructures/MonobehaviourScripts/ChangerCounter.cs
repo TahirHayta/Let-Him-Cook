@@ -28,7 +28,7 @@ public class ChangerCounter : CounterParent
     {
         isProcessing = false;
     }
-    public bool isProccessable()//TODO check recipe with this.fooditems.
+    public bool isProccessable() // TODO check recipe with this.fooditems.
     {
         return false; 
     }
