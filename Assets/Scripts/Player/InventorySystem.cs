@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -10,25 +11,37 @@ public class InventorySystem : MonoBehaviour
     
     public GameObject inventoryGrid;
     public GameObject inventorySlot;
+    
+    public static Action OnInventoryChanged;
 
-    public void AddItem(ItemSO item) {
+    public bool AddItem(ItemSO item) {
         if (items.Count >= maxItems) {
             Debug.Log("Inventory is full!");
+            return false;
         }
         items.Add(item);
         Debug.Log("Added " + item.itemName + " to inventory.");
         UpdateInventoryUI();
+        OnInventoryChanged?.Invoke();
+        return true;
     }
 
     public void RemoveItem(ItemSO item) {
         @Assert.IsTrue(items.Contains(item), "Item not found in inventory.");
         items.Remove(item);
         UpdateInventoryUI();
+        OnInventoryChanged?.Invoke();
     }
 
     public void UpdateInventoryUI() {
         foreach (Transform child in inventoryGrid.transform) {
             Destroy(child.gameObject);
+        }
+        
+        GridLayoutGroup grid = inventorySlot.GetComponent<GridLayoutGroup>();
+        if (grid != null) {
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            grid.constraintCount = maxItems;
         }
 
         foreach (var item in items) {
@@ -36,6 +49,24 @@ public class InventorySystem : MonoBehaviour
             Image icon = slot.GetComponentInChildren<Image>();
             if (icon != null && item.itemPrefab != null) {
                 icon.sprite = item.itemPrefab.GetComponent<SpriteRenderer>().sprite;
+            }
+        }
+        OnInventoryChanged?.Invoke();
+    }
+    
+    public void OnEnable() {
+        PlayerInteraction.OnInteract += HandleInventoryChanged;
+    }
+    public void OnDisable() {
+        PlayerInteraction.OnInteract -= HandleInventoryChanged;
+    }
+    
+    private void HandleInventoryChanged(GameObject interactedObject) {
+        ItemSO item = interactedObject.GetComponent<ItemSO>();
+        if (item != null) {
+            bool added = AddItem(item);
+            if (added) {
+                Destroy(interactedObject);
             }
         }
     }
