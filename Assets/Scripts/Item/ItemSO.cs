@@ -7,5 +7,4 @@ public class ItemSO : ScriptableObject
     public int itemID;
     public string itemDescription;
     public Sprite itemIcon;
-    public GameObject itemPrefab; // bunu çıkartabiliriz de ben de tam bilmiyom
 }

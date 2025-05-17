@@ -47,8 +47,8 @@ public class InventorySystem : MonoBehaviour
         foreach (var item in items) {
             GameObject slot = Instantiate(inventorySlot, inventoryGrid.transform);
             Image icon = slot.GetComponentInChildren<Image>();
-            if (icon != null && item.itemPrefab != null) {
-                icon.sprite = item.itemPrefab.GetComponent<SpriteRenderer>().sprite;
+            if (icon != null) {
+                icon.sprite = item.itemIcon;
             }
         }
         OnInventoryChanged?.Invoke();
@@ -62,9 +62,9 @@ public class InventorySystem : MonoBehaviour
     }
     
     private void HandleInventoryChanged(GameObject interactedObject) {
-        ItemSO item = interactedObject.GetComponent<ItemSO>();
+        ItemBehaviour item = interactedObject.GetComponent<ItemBehaviour>();
         if (item != null) {
-            bool added = AddItem(item);
+            bool added = AddItem(item.ItemData);
             if (added) {
                 Destroy(interactedObject);
             }

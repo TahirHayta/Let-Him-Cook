@@ -27,6 +27,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             TryInteract();
         }
+        
     }
 
     void TryInteract()
@@ -37,7 +38,16 @@ public class PlayerInteraction : MonoBehaviour
         if (hit != null)
         {
             Debug.Log("Detected: " + hit.name);
-            hit.GetComponent<InteractableInterface>()?.Interact(); // Event only called for interacted object.
+            ItemBehaviour itemBehaviour = hit.GetComponent<ItemBehaviour>();
+            if (itemBehaviour != null)
+            {
+                itemBehaviour.OnPickup();
+                OnInteract?.Invoke(hit.gameObject);
+            }
+            else
+            {
+                hit.GetComponent<InteractableInterface>()?.Interact();
+            }
         }
     }
 
