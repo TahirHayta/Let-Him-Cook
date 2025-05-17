@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ChangerCounter : CounterParent
 {
-    public LinkedList<Recipe> recipes = new LinkedList<Recipe>(); // to convert some food items to another food item, we will check this counter's recipes.
+    public ChangerCounterRecipies changerCounterRecipies; // to convert some food items to another food item, we will check this counter's recipes.
     public bool isProcessing; // if this counter is processing a recipe, we will not allow to add more items to it.
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
