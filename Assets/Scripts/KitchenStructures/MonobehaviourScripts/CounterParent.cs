@@ -9,7 +9,7 @@ public class CounterParent : MonoBehaviour, InteractableInterface
     public bool isFull;
     public int maxCapacity;
     public int currentCapacity;
-    public LinkedList<ItemSO> ItemSOs = new LinkedList<ItemSO>(); // to hold food items in the counter
+    public LinkedList<ItemSO> holdingItems = new LinkedList<ItemSO>(); // to hold food items in the counter
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,7 +34,7 @@ public class CounterParent : MonoBehaviour, InteractableInterface
     {
         if (!isFull)
         {
-            ItemSOs.AddLast(item);
+            holdingItems.AddLast(item);
             currentCapacity++;
             if (currentCapacity >= maxCapacity)
             {
@@ -51,8 +51,8 @@ public class CounterParent : MonoBehaviour, InteractableInterface
     {
         if (currentCapacity > 0)
         {
-            ItemSO item = ItemSOs.Last.Value;
-            ItemSOs.RemoveLast();
+            ItemSO item = holdingItems.Last.Value;
+            holdingItems.RemoveLast();
             currentCapacity--;
             isFull = false;
             return item;

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998bb82dc3f8a4d62bd039af9546d3d5, type: 3}
   m_Name: "Salatal\u0131k"
   m_EditorClassIdentifier: 
-  itemName: 
-  itemID: 0
-  itemDescription: 
+  itemName: "Salatal\u0131k"
+  itemID: 2
+  itemDescription: "\xC7atalla ye himmet, elinle de\u011Fil."
   itemIcon: {fileID: 0}
   itemPrefab: {fileID: 0}

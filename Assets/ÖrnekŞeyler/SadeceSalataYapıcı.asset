@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a7c630b49219842a74b8ab7eb2edcb, type: 3}
+  m_Name: "SadeceSalataYap\u0131c\u0131"
+  m_EditorClassIdentifier: 
+  counterType: "SadeceSalatal\u0131kYap\u0131c\u0131"
+  explanation: "Sadece salatal\u0131k yapar."
+  recipes:
+  - {fileID: 11400000, guid: b64551e81a0319b498c04021f28bd759, type: 2}

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cbffb22a84451439cff9ade87e4ab1, type: 3}
   m_Name: "Salatal\u0131kTarifi"
   m_EditorClassIdentifier: 
-  recipeName: 
+  recipeName: "Salatal\u0131kTarifi"
+  recipeID: 0
+  recipeDescription: "\u0130deal yeme\u011Fimiz"
   inputItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  outputItem: {fileID: 0}
-  processTime: 0
+  - {fileID: 11400000, guid: 08c7189928cd86449a0579a00275ee19, type: 2}
+  - {fileID: 11400000, guid: 7a136952cf1b25641a323cdbfeaf05a3, type: 2}
+  outputItem: {fileID: 11400000, guid: d7d4778f47aa6eb4da044675ad6d4964, type: 2}
+  processTime: 5

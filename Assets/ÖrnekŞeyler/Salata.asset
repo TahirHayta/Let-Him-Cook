@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998bb82dc3f8a4d62bd039af9546d3d5, type: 3}
   m_Name: Salata
   m_EditorClassIdentifier: 
-  itemName: 
-  itemID: 0
-  itemDescription: 
+  itemName: Salata
+  itemID: 1
+  itemDescription: "Ye\u015Fil uzun olan :D"
   itemIcon: {fileID: 0}
   itemPrefab: {fileID: 0}
